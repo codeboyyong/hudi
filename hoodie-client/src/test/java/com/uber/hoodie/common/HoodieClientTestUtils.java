@@ -101,6 +101,8 @@ public class HoodieClientTestUtils {
   public static SparkConf getSparkConfForTest(String appName) {
     SparkConf sparkConf = new SparkConf().setAppName(appName)
         .set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+            .set("spark.driver.bindAddress","127.0.0.1")
+            .set("spark.ui.enabled","false")
         .setMaster("local[1]");
     return HoodieReadClient.addHoodieSupport(sparkConf);
   }
